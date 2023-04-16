@@ -1,12 +1,14 @@
 import re
 
-regex = r'(\b[a-z]\.([a-z]{2,})\.(\d{4})\@alumnos\.urjc\.es\b)|(\b([a-z]{2,})\.([a-z]{2,})\@urjc\.es\b)'
+ent = input()
+prof = r'\b(\w+)\.(\w+)@urjc\.es\b'
+alu = r'\b\w\.(\w{2,})\.(\d{4})@alumnos\.urjc\.es\b'
+resP = re.findall(prof, ent)
+resA = re.findall(alu, ent)
 
-string = input()
-correo = re.findall(regex, string)
+for n, a in resP:
+    print("profesor "+n+" apellido "+a)
 
-for sols in correo:
-    if not sols[0]:
-        print("profesor", sols[4], "apellido", sols[5])
-    else:
-        print("alumno", sols[1], "matriculado en", sols[2])
+for n, a in resA:
+    print("alumno "+n+" matriculado en "+a)
+

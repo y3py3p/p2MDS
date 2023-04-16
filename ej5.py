@@ -1,8 +1,9 @@
 import re
 
-string = input()
-regex = r'\b(?:C\/|Calle)\s([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]*)\,?\s+(?:n|N|n\º|N\º)?\s?(\d+)\,\s+(\d{5})\b'
-street = re.findall(regex, string)
+ent = input()
+reg = r'\b(?:C\/|Calle) ([A-ZÁÉÍÓÚÑ][a-zñáéíóú]+),? +(?:(?:N|n)º? ?)?(\d+), +(\d{5})\b'
 
-for calle in street:
-    print(calle[2] + "-" + calle[0]  + "-"  + calle[1])
+
+res = re.findall(reg, ent)
+for c, n, p in res:
+    print(p+"-"+c+"-"+n)
